@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <title>Guitar Chords</title>
+  </head>
+  <body>
+
+    <header>
+      <h1></h1>
+    </header>
+    <main>
+      <section>
+        <div id="instructions">
+          <h3>Learn to play guitar chords! Select the root note and chord type to get a fingering chart.</h3>
+          <div class="instruction">
+            <span class="marker"></span>
+            <p> Indicates a finger position. The number is the finger to use (1: index, 2: middle, 3: ring, 4: pinky)</p>
+          </div>
+          <div class="instruction">
+            <span class="marker open">O</span>
+            <p>Indicates an open string. Strum this string but don't press down on any fret.</p>
+          </div>
+          <div class="instruction">
+            <span class="mute">X</span>
+            <p>Indicates a muted string. Don't strum this string.</p>
+          </div>
+        </div>
+        
+        <div id="controls">
+          <div>
+            <select id="note-select"></select>
+            <select id="type-select"></select>
+          </div>
+          <button id="get-chord-button">get chord</button>
+        </div>
+
+        <div id="chord-info">
+          <h3 id="chord-name"></h3>
+          <h4 id="chord-tones"></h4>
+        </div>
+      </section>
+
+      <section>
+        <div id="chart-container" class="hidden">
+          <div id="strings">
+            <span class="string"></span>
+            <span class="string"></span>
+            <span class="string"></span>
+            <span class="string"></span>
+            <span class="string"></span>
+            <span class="string"></span>
+          </div>
+          <div id="chart"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
