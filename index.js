@@ -85,10 +85,10 @@ const createFretboard = (fretPositions) => {
 
 const createChordInfo = (chordData) => {
 	const { chordName, tones } = chordData;
-	const formattedName = chordName.replaceAll(",", " ");
-	const formattedTones = tones.replaceAll(",", " - ");
-	chordNameContainer.innerHTML = formattedName;
-	chordTones.innerHTML = formattedTones;
+	const formattedName = chordName.replaceAll(",", " ").replace("b", "&#9837");
+	const formattedTones = tones.replaceAll(",", " - ").replaceAll("b", "&#9837");
+	chordNameContainer.innerHTML = `Chord name: ${formattedName}`;
+	chordTones.innerHTML = `Notes: ${formattedTones}`;
 };
 
 const groupByFingerPosition = (positions) => {
