@@ -22,7 +22,6 @@ const chartContainer = document.querySelector("#chart-container");
 const chart = document.querySelector("#chart");
 const noteSelect = document.querySelector("#note-select");
 const typeSelect = document.querySelector("#type-select");
-const getChordButton = document.querySelector("#get-chord-button");
 const chordNameContainer = document.querySelector("#chord-name");
 const chordTones = document.querySelector("#chord-tones");
 
@@ -119,7 +118,7 @@ const createBarre = (positions) => {
 	pos.append(barre);
 };
 
-getChordButton.addEventListener("click", async () => {
+const getChord = async () => {
 	const note = NOTES[noteSelect.selectedIndex];
 	const type = TYPES[typeSelect.selectedIndex].value;
 	const url = `${BASE_URL}${note}${type}`;
@@ -130,7 +129,7 @@ getChordButton.addEventListener("click", async () => {
 	const fingeringArray = fingering.split(" ").map((el) => parseInt(el) || el);
 	const stringsArray = strings.split(" ").map((el) => parseInt(el) || el);
 
-	createChordInfo(chord);
+	// createChordInfo(chord);
 	chartContainer.classList.remove("hidden");
 
 	const frets = createFretboard(stringsArray.filter((s) => parseInt(s)));
@@ -142,7 +141,7 @@ getChordButton.addEventListener("click", async () => {
 
 	const groups = groupByFingerPosition(positions);
 	groups.forEach((group) => createBarre(group));
-	console.log("groups", groups);
+
 	positions.forEach((pos) => {
 		let fretboardPosition = document.querySelector(
 			`#pos-${pos.fret}-${pos.string}`,
@@ -162,4 +161,8 @@ getChordButton.addEventListener("click", async () => {
 			fretboardPosition.append(marker);
 		}
 	});
-});
+};
+
+noteSelect.addEventListener("change", getChord);
+typeSelect.addEventListener("change", getChord);
+getChord();

@@ -1,6 +1,6 @@
 :root {
   --black: #171717;
-  --white: #FAFAFA;
+  --white: #fafafa;
   --orange: #ff9900;
   --blue: #2052e9;
   --silver: silver;
@@ -9,9 +9,12 @@
   --red: #e92020;
   --aqua: #00b3b3;
   --charcoal: #3F3F46;
+  --extradarkgrey: #1d1d21;
   --darkgrey: darkgrey;
   --lightgrey: #E5E5E5;
-  --fretboard-width: 250px;
+  --hero-gradient: linear-gradient(170deg, rgba(63,63,70,1) 0%, rgba(63,63,70,1) 49%, rgba(78,78,84,1) 100%);
+  --fretboard-width: 200px;
+  --fretboard-height: calc(var(--fretboard-width) * 2.4);
   --string-width: calc(var(--fretboard-width) / 6);
   --string-texture: linear-gradient(0deg, var(--grey) 50%, var(--silver) 50%);
 }
@@ -26,60 +29,68 @@ body {
   background: var(--lightgrey);
 }
 
-h1, p, h3 {
+h1, h2, h3, p {
   margin: 0;
 }
 
 header {
-  text-align: center;
-  padding: 20px;
   color: var(--white);
-  background-color: var(--charcoal);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: var(--extradarkgrey);
+  padding: 0.5rem 0;
+}
+
+#title-container {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 header h1 {
-  margin-bottom: 20px;
+  margin-left: 2rem;
 }
 
-header h3 {
-  max-width: 500px;
+#hero {
+  background-color: var(--charcoal);
+  background: var(--hero-gradient);
+  padding: 2rem 0;
+  color: var(--white);
+}
+
+#hero-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+}
+
+header p {
+  max-width: 400px;
 }
 
 main {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 section {
   padding: 30px;
 }
 
-select, button {
-  padding: 5px;
-  font-size: 1rem;
+select {
+  padding: 1rem;
+  font-size: 1.5rem;
   border-radius: 3px;
-  border: none;
-  background: var(--darkgrey);
-  color: var(--black);
-}
-
-button {
-  text-transform: uppercase;
-  margin-top: 10px;
-  padding: 10px;
-  font-weight: bold;
-  cursor: pointer;
+  background: var(--charcoal);
+  color: var(--white);
 }
 
 #instructions {
-  color: var(--black);
-  border-radius: 4px;
-  padding: 12px;
+  color: var(--white);
+  padding-top: 1rem;
 }
 
 #instructions h3 {
@@ -88,22 +99,25 @@ button {
 
 .instruction {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  position: relative;
 }
 
-.instruction p {
-  width: 80%;
+.instruction .marker, .instruction .mute {
+  width: 20px;
+  height: 20px;
+  border-width: 1px;
+  font-size: 10px;
+  position: absolute;
+  top: 0;
+  left: -30px;
 }
 
 #controls {
   text-align: center;
-  margin-bottom: 50px;
   padding: 50px 0 20px;
-  grid-column-start: 1;
-  grid-column-end: 4;
 }
 
 #chord-info {
@@ -116,7 +130,7 @@ button {
 #chart-container {
   margin: 0 auto;
   width: var(--fretboard-width);
-  height: 600px;
+  height: var(--fretboard-height);
   position: relative;
 }
 
@@ -205,9 +219,9 @@ button {
 
 .marker, .mute, .barre {
   background: var(--blue);
-  height: 40px;
-  width: 40px;
-  border-radius: 40px;
+  height: 35px;
+  width: 35px;
+  border-radius: 35px;
   color: white;
   display: flex;
   justify-content: center;
@@ -298,8 +312,8 @@ button {
   text-transform: uppercase;
 }
 
-@media only screen and (max-width: 800px) {
-  main {
-    grid-template-columns: 1fr;
+@media only screen and (max-width: 1140px) {
+  #hero-content {
+    flex-direction: column;
   }
 } 

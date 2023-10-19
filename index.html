@@ -14,27 +14,39 @@
   <body>
 
     <header>
-      <h1>OpenChord</h1>
-      <h3>Learn to play guitar chords! Select the root note and chord type to get a fingering chart.</h3>
+      <div id="title-container">
+        <h1>OpenChord</h1>
+      </div>
     </header>
-    <main>
-      <section>
-          
+    <div id="hero">
+
+    
+      <div id="hero-content">
+        <div>
+          <h2>A Guitar Chord Visualizer</h2>
+          <p>Select a root and chord type to see a chart</p>
+          <div id="instructions">
+            <div class="instruction">
+              <span class="marker"></span>
+              <p> Indicates a finger position. The number is the finger to use (1: index, 2: middle, 3: ring, 4: pinky)</p>
+            </div>
+            <div class="instruction">
+              <span class="marker open">O</span>
+              <p>Indicates an open string. Strum this string but don't press down on any fret.</p>
+            </div>
+            <div class="instruction">
+              <span class="mute">X</span>
+              <p>Indicates a muted string. Don't strum this string.</p>
+            </div>
+          </div>
+        </div>
         <div id="controls">
-          <div>
             <select id="note-select"></select>
             <select id="type-select"></select>
-          </div>
-          <button id="get-chord-button">get chord</button>
         </div>
-
-        <div id="chord-info">
-          <h3 id="chord-name"></h3>
-          <h4 id="chord-tones"></h4>
-        </div>
-      </section>
-
-      <section>
+      </div>
+      </div>
+    <main>
         <div id="chart-container" class="hidden">
           <div id="strings">
             <span class="string"></span>
@@ -46,24 +58,6 @@
           </div>
           <div id="chart"></div>
         </div>
-      </section>
-
-      <section>
-        <div id="instructions">
-          <div class="instruction">
-            <span class="marker"></span>
-            <p> Indicates a finger position. The number is the finger to use (1: index, 2: middle, 3: ring, 4: pinky)</p>
-          </div>
-          <div class="instruction">
-            <span class="marker open">O</span>
-            <p>Indicates an open string. Strum this string but don't press down on any fret.</p>
-          </div>
-          <div class="instruction">
-            <span class="mute">X</span>
-            <p>Indicates a muted string. Don't strum this string.</p>
-          </div>
-        </div>
-      </section>
     </main>
 
     <script src="index.js"></script>
