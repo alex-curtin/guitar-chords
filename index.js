@@ -249,7 +249,6 @@ const getChordSequence = (stringsArray) => {
 	}
 	chordSequence = new Tone.Sequence(
 		function (time, note) {
-			console.log("in sequence", note);
 			guitar.triggerAttackRelease(note, "1n", time);
 		},
 		audioTones,
@@ -258,7 +257,6 @@ const getChordSequence = (stringsArray) => {
 	chordSequence.humanize = true;
 	chordSequence.humanizeAmount = 0.5;
 	chordSequence.loop = false;
-	console.log("tones", audioTones);
 };
 
 const getChord = async () => {
@@ -272,7 +270,7 @@ const getChord = async () => {
 	const fingeringArray = fingering.split(" ").map((el) => parseInt(el) || el);
 	stringsData = strings.split(" ").map((el) => parseInt(el) || el);
 	getChordSequence(stringsData);
-	// createChordInfo(chord);
+
 	chartContainer.classList.remove("hidden");
 
 	const frets = createFretboard(stringsData.filter((s) => parseInt(s)));
