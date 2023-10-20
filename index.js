@@ -121,6 +121,7 @@ const speedSlider = document.querySelector("#speed");
 
 let chordSequence;
 let stringsData;
+let samplesLoaded = false;
 
 const guitar = new Tone.Sampler({
 	urls: {
@@ -133,7 +134,10 @@ const guitar = new Tone.Sampler({
 	},
 	baseUrl: "/assets/audio/",
 	onload: () => {
-		console.log("loaded");
+		samplesLoaded = true;
+		if (stringsData && playBtn.hasAttribute("disabled")) {
+			playBtn.removeAttribute("disabled");
+		}
 	},
 });
 
@@ -265,6 +269,10 @@ const getChord = async () => {
 	const url = `${BASE_URL}${note}${type}`;
 	const response = await fetch(url);
 	const [chord] = await response.json();
+
+	if (samplesLoaded && playBtn.hasAttribute("disabled")) {
+		playBtn.removeAttribute("disabled");
+	}
 
 	const { fingering, strings } = chord;
 	const fingeringArray = fingering.split(" ").map((el) => parseInt(el) || el);

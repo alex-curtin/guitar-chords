@@ -66,6 +66,7 @@ h1, h2, h3, p {
   background-color: var(--charcoal);
   background: var(--hero-gradient);
   color: var(--white);
+  box-shadow: 1px 1px 2px 0px var(--black);
 }
 
 header {
@@ -115,6 +116,11 @@ header p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#play-btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 #play-icon {
