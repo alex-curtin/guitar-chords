@@ -1,6 +1,6 @@
 :root {
   --black: #171717;
-  --white: #fafafa;
+  --white: #efefef;
   --orange: #ff9900;
   --blue: #2052e9;
   --silver: silver;
@@ -9,14 +9,41 @@
   --red: #e92020;
   --aqua: #00b3b3;
   --charcoal: #3F3F46;
-  --extradarkgrey: #1d1d21;
+  --extradarkgrey: #27272d;
   --darkgrey: darkgrey;
   --lightgrey: #E5E5E5;
-  --hero-gradient: linear-gradient(170deg, rgba(63,63,70,1) 0%, rgba(63,63,70,1) 49%, rgba(78,78,84,1) 100%);
+  /* --hero-gradient: linear-gradient(170deg, rgba(63,63,70,1) 0%, rgba(63,63,70,1) 49%, rgba(78,78,84,1) 100%); */
+  --hero-gradient: linear-gradient(
+  120deg,
+  hsl(240deg 7% 16%) 0%,
+  hsl(240deg 7% 18%) 11%,
+  hsl(240deg 7% 19%) 22%,
+  hsl(240deg 6% 20%) 33%,
+  hsl(240deg 6% 21%) 44%,
+  hsl(240deg 6% 22%) 56%,
+  hsl(240deg 6% 23%) 67%,
+  hsl(240deg 6% 24%) 78%,
+  hsl(240deg 5% 25%) 89%,
+  hsl(240deg 5% 26%) 100%
+);
+--main-gradient: linear-gradient(
+  115deg,
+  hsl(0deg 0% 94%) 0%,
+  hsl(0deg 0% 93%) 21%,
+  hsl(0deg 0% 92%) 30%,
+  hsl(0deg 0% 91%) 39%,
+  hsl(0deg 0% 90%) 46%,
+  hsl(0deg 0% 89%) 54%,
+  hsl(0deg 0% 88%) 61%,
+  hsl(0deg 0% 87%) 69%,
+  hsl(0deg 0% 86%) 79%,
+  hsl(0deg 0% 85%) 100%
+);
   --fretboard-width: 200px;
   --fretboard-height: calc(var(--fretboard-width) * 2.4);
-  --string-width: calc(var(--fretboard-width) / 6);
+  --string-width: calc(var(--fretboard-width) / 5.7);
   --string-texture: linear-gradient(0deg, var(--grey) 50%, var(--silver) 50%);
+  --max-width: 1200px;
 }
 
 * {
@@ -26,58 +53,83 @@
 body {
   margin: 0;
   font-family: inter, sans-serif;
-  background: var(--lightgrey);
+  background: var(--main-gradient);
+  min-height: 100vh;
+  font-family: 'Lato', sans-serif;
 }
 
 h1, h2, h3, p {
   margin: 0;
 }
 
-header {
-  color: var(--white);
-  background-color: var(--extradarkgrey);
-  padding: 0.5rem 0;
-}
-
-#title-container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-header h1 {
-  margin-left: 2rem;
-}
-
 #hero {
   background-color: var(--charcoal);
   background: var(--hero-gradient);
-  padding: 2rem 0;
   color: var(--white);
 }
 
-#hero-content {
-  max-width: 1100px;
-  margin: 0 auto;
+header {
+  color: var(--white);
+  padding: 1.5rem 2rem 1rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding-left: 40px;
+  align-items: flex-start;
+}
+
+h1 {
+  font-weight: normal;
+  font-family: 'Arvo', serif;
+  letter-spacing: -2px;
+}
+
+h1 span {
+  font-weight: 800;
 }
 
 header p {
-  max-width: 400px;
+  font-size: 1.2rem;
 }
 
-main {
-  padding-top: 3rem;
+#play-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#speed-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#play-btn {
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid var(--white);
+  border-radius: 100%;
+  background-color: var(--charcoal);
+  color: var(--white);
+  cursor: pointer;
+  margin-bottom: 5px;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-section {
-  padding: 30px;
+#play-icon {
+  box-sizing: unset;
+  width: 0;
+  height: 0;
+  border-top: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  border-left: 1.5rem solid var(--white);
+  margin-left: 0.5rem;
+  border-radius: 2px;
+}
+
+#play-btn:active #play-icon {
+  transform: scale(0.9);
 }
 
 select {
@@ -88,43 +140,53 @@ select {
   color: var(--white);
 }
 
-#instructions {
-  color: var(--white);
-  padding-top: 1rem;
+#hero-content {
+  padding-right: 2rem;
 }
 
-#instructions h3 {
-  text-align: center;
+details {
+  width: 100%;
+  text-align: right;
+}
+
+details summary {
+  cursor: pointer;
+  padding-bottom: 0.5rem;
+}
+
+#instructions {
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: max-content;
 }
 
 .instruction {
   display: flex;
   align-items: start;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 0.5rem;
-  position: relative;
+  gap: 0.5rem;
+}
+
+.instruction p {
+  text-align: left;
 }
 
 .instruction .marker, .instruction .mute {
+  flex-shrink: 0;
   width: 20px;
   height: 20px;
   border-width: 1px;
   font-size: 10px;
-  position: absolute;
-  top: 0;
-  left: -30px;
 }
 
-#controls {
-  text-align: center;
-  padding: 50px 0 20px;
-}
-
-#chord-info {
-  text-align: center;
-  font-weight: bold;
-  color: var(--black);
-  font-size: 1.5rem;
+main {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #chart-container {
@@ -312,8 +374,27 @@ select {
   text-transform: uppercase;
 }
 
-@media only screen and (max-width: 1140px) {
-  #hero-content {
-    flex-direction: column;
+footer {
+  position: fixed;
+  bottom: 0;
+  padding: 0.5rem 1rem;
+  background-color: var(--charcoal);
+  width: 100%;
+  color: var(--white);
+  text-align: right;
+  font-size: 14px;
+  z-index: 100;
+}
+
+footer a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 786px) {
+  header {
+    flex-wrap: wrap;
+    gap: 2rem;
   }
 } 
